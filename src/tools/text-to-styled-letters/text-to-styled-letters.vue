@@ -7,18 +7,18 @@ const input = ref('');
 const selectedStyle = ref<StyleType>('bold');
 
 const styleOptions: { label: string; value: StyleType }[] = [
-  { label: 'Bold', value: 'bold' },
-  { label: 'Italic', value: 'italic' },
-  { label: 'Bold Italic', value: 'boldItalic' },
-  { label: 'Script', value: 'script' },
-  { label: 'Bold Script', value: 'boldScript' },
-  { label: 'Fraktur', value: 'fraktur' },
-  { label: 'Double-Struck', value: 'doubleStruck' },
-  { label: 'Sans-Serif', value: 'sansSerif' },
-  { label: 'Sans-Serif Bold', value: 'sansSerifBold' },
-  { label: 'Sans-Serif Italic', value: 'sansSerifItalic' },
-  { label: 'Sans-Serif Bold Italic', value: 'sansSerifBoldItalic' },
-  { label: 'Monospace', value: 'monospace' },
+  { label: '𝐛𝐨𝐥𝐝', value: 'bold' },
+  { label: '𝑖𝑡𝑎𝑙𝑖𝑐', value: 'italic' },
+  { label: '𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄', value: 'boldItalic' },
+  { label: '𝒮𝒸𝓇𝒾𝓅𝓉', value: 'script' },
+  { label: '𝓑𝓸𝓵𝓭 𝓢𝓬𝓻𝓲𝓹𝓽', value: 'boldScript' },
+  { label: '𝔉𝔯𝔞𝔨𝔱𝔲𝔯', value: 'fraktur' },
+  { label: '𝔻𝕠𝕦𝕓𝕝𝕖-𝕊𝕥𝕣𝕦𝕔𝕜', value: 'doubleStruck' },
+  { label: '𝖲𝖺𝗇𝗌-𝖲𝖾𝗋𝗂𝖿', value: 'sansSerif' },
+  { label: '𝗦𝗮𝗻𝘀-𝗦𝗲𝗿𝗶𝗳 𝗕𝗼𝗹𝗱', value: 'sansSerifBold' },
+  { label: '𝘚𝘢𝘯𝘴-𝘚𝘦𝘳𝘪𝘧 𝘐𝘵𝘢𝘭𝘪𝘤', value: 'sansSerifItalic' },
+  { label: '𝙎𝙖𝙣𝙨-𝙎𝙚𝙧𝙞𝙛 𝘽𝙤𝙡𝙙 𝙄𝙩𝙖𝙡𝙞𝙘', value: 'sansSerifBoldItalic' },
+  { label: '𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎', value: 'monospace' },
 ];
 
 const styledText = computed(() =>

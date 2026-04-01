@@ -1,4 +1,65 @@
-export const styledLetters = {
+interface StyledLetterMap { [key: string]: string[] }
+
+export type StyleType =
+    | 'bold'
+    | 'italic'
+    | 'boldItalic'
+    | 'script'
+    | 'boldScript'
+    | 'fraktur'
+    | 'doubleStruck'
+    | 'sansSerif'
+    | 'sansSerifBold'
+    | 'sansSerifItalic'
+    | 'sansSerifBoldItalic'
+    | 'monospace';
+
+export const STYLE_INDEX: Record<StyleType, number> = {
+  bold: 0,
+  italic: 1,
+  boldItalic: 2,
+  script: 3,
+  boldScript: 4,
+  fraktur: 5,
+  doubleStruck: 6,
+  sansSerif: 7,
+  sansSerifBold: 8,
+  sansSerifItalic: 9,
+  sansSerifBoldItalic: 10,
+  monospace: 11,
+};
+
+export const DIGIT_STYLE_MAP: Record<StyleType, number | null> = {
+  bold: 0,
+  italic: null,
+  boldItalic: 0,
+  script: null,
+  boldScript: null,
+  fraktur: null,
+  doubleStruck: 1,
+  sansSerifBold: 3,
+  sansSerifBoldItalic: 3,
+  sansSerif: 2,
+  sansSerifItalic: 2,
+  monospace: 4,
+};
+
+export const GREEK_STYLE_MAP: Record<StyleType, number | null> = {
+  bold: 0,
+  italic: 1,
+  boldItalic: 2,
+  script: null,
+  boldScript: null,
+  fraktur: null,
+  doubleStruck: null,
+  sansSerifBold: 3,
+  sansSerifBoldItalic: 4,
+  sansSerif: null,
+  sansSerifItalic: 1,
+  monospace: null,
+};
+
+export const styledLetters: StyledLetterMap = {
   A: ['𝐀', '𝐴', '𝑨', '𝒜', '𝓐', '𝕬', '𝔸', '𝖠', '𝗔', '𝘈', '𝘼', '𝙰'],
   B: ['𝐁', '𝐵', '𝑩', 'ℬ', '𝓑', '𝕭', '𝔹', '𝖡', '𝗕', '𝘉', '𝘽', '𝙱'],
   C: ['𝐂', '𝐶', '𝑪', '𝒞', '𝓒', '𝕮', 'ℂ', '𝖢', '𝗖', '𝘊', '𝘾', '𝙲'],
@@ -54,7 +115,7 @@ export const styledLetters = {
   z: ['𝐳', '𝑧', '𝒛', '𝓏', '𝔃', '𝖟', '𝕫', '𝗓', '𝘇', '𝘻', '𝙯', '𝚣'],
 };
 
-export const styledDigits = {
+export const styledDigits: StyledLetterMap = {
   0: ['𝟎', '𝟘', '𝟢', '𝟬', '𝟶'],
   1: ['𝟏', '𝟙', '𝟣', '𝟭', '𝟷'],
   2: ['𝟐', '𝟚', '𝟤', '𝟮', '𝟸'],
@@ -67,7 +128,7 @@ export const styledDigits = {
   9: ['𝟗', '𝟡', '𝟫', '𝟵', '𝟿'],
 };
 
-export const styledGreek = {
+export const styledGreek: StyledLetterMap = {
   'Α': ['𝚨', '𝛢', '𝜜', '𝝖', '𝞐'], // Alpha
   'Β': ['𝚩', '𝛣', '𝜝', '𝝗', '𝞑'], // Beta
   'Γ': ['𝚪', '𝛤', '𝜞', '𝝘', '𝞒'], // Gamma
