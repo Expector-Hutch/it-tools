@@ -1,4 +1,67 @@
-import { replace } from 'unicodeit';
+import { combiningmarks, replacements, subsuperscripts } from './latex-to-unicode.constants';
+
+
+function replace(f: string): string {
+    f = f.replace(/\\not(\\[A-z]+)/g, '\\slash{$1}');
+    for (const ic in combiningmarks) {
+        const c = combiningmarks[ic];
+
+        let i = -1;
+        while (
+            (i = f.indexOf(c[0], i+1)) > -1
+            && f.indexOf("}", i+1) > i
+        ) {
+            f = f.slice(0, i+1) + ' ' + f.slice(i+1);
+        }
+    }
+
+    for (const ir in replacements) {
+        const r = replacements[ir];
+        f = f.split(r[0]).join(r[1]);
+
+        if (r[0].slice(-2) == '{}') {
+            f = f.split('\\ '+r[0].slice(1)).join(r[1]);
+        }
+    }
+
+    let isub = -1;
+    while (
+        (isub = f.indexOf("_{", isub+1)) > -1
+        && f.indexOf("}", isub+1) > isub
+    ) {
+        f = f.slice(0, isub) + '_' + f[isub+2] + '_{' + f.slice(isub+3);
+        f = f.replace('_{}', '');
+    }
+
+    let isup = -1;
+    while (
+        (isup = f.indexOf("^{", isup+1)) > -1
+        && f.indexOf("}", isup+1) > isup
+    ) {
+        f = f.slice(0, isup) + '^' + f[isup+2] + '^{' + f.slice(isup+3);
+        f = f.replace('^{}', '');
+    }
+
+    for (const ir in subsuperscripts) {
+        const r = subsuperscripts[ir];
+        f = f.split(r[0]).join(r[1]);
+    }
+
+    for (const ic in combiningmarks) {
+        const c = combiningmarks[ic];
+
+        let i = -1;
+        while (
+            (i = f.indexOf('\\ '+c[0].slice(1)+'{', i+1)) > -1
+            && f.indexOf("}", i+1) > i
+        ) {
+            const newString = f[i+c[0].length+2] + c[1];
+            f = f.slice(0,i)+newString+f.slice(i+1+c[0].length+3);
+        }
+    }
+
+    return f;
+}
 
 export function latexToUnicode({ text }: { text: string }): string {
   return replace(text);
